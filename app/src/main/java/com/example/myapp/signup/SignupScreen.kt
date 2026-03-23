@@ -136,7 +136,7 @@ fun SignupContent(
                 colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Orange)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(17.dp))
 
             OutlinedTextField(
                 value = uiState.password,
@@ -166,6 +166,12 @@ fun SignupContent(
                         )
                     }
                 }
+            )
+
+            Text(
+                text = "영문 소문자, 숫자, 특수문자를 포함한 8자 이상으로 입력해주세요",
+                fontFamily = Mung,
+                color = Orange
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -200,7 +206,7 @@ fun SignupContent(
                 }
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
             Button(
                 onClick = onSignupClick,

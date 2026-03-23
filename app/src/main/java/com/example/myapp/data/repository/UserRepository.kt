@@ -120,4 +120,28 @@ class UserRepository @Inject constructor(
             isDefaultImage = isDefaultImage
         )
     }
+
+    suspend fun deleteCurrentUserData(uid: String): Result<Unit> {
+        return try {
+            deleteProfileImageIfExists(uid)
+            firestore.collection(USERS_COLLECTION)
+                .document(uid)
+                .delete()
+                .await()
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    private suspend fun deleteProfileImageIfExists(uid: String) {
+        try {
+            firestorage.reference
+                .child("$PROFILE_IMAGES_PATH/$uid.jpg")
+                .delete()
+                .await()
+        } catch (_: Exception) {
+            // 파일이 없으면 무시
+        }
+    }
 }
