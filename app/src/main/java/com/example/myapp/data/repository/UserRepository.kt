@@ -79,12 +79,17 @@ class UserRepository @Inject constructor(
         isDefaultImage: Boolean
     ): Result<Unit> {
         return try {
+            val currentProfile = getUserProfile(uid).getOrThrow()
+
             val imageUri = if (imageUri != null && !isDefaultImage) {
                 uploadProfileImage(uid, imageUri).getOrThrow()
             } else if (isDefaultImage) {
+                if (currentProfile?.isDefaultImage == false) {
+                    deleteProfileImageIfExists(uid)
+                }
                 "$DEFAULT_IMAGE_PREFIX$breed"
             } else {
-                null
+                currentProfile?.imageUri
             }
 
             val updates = mapOf(

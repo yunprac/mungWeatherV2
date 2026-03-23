@@ -14,6 +14,8 @@ import com.example.myapp.data.repository.AIRepository
 import com.example.myapp.data.repository.AuthRepository
 import com.example.myapp.data.repository.UserRepository
 import com.example.myapp.data.repository.WeatherRepository
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.GoogleAuthProvider
 import com.example.myapp.home.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -23,6 +25,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -197,6 +200,69 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.logout(context)
             _uiState.update { it.copy(navigationTarget = NavigationTarget.Login) }
+        }
+    }
+
+    fun isGoogleAccount(): Boolean {
+        val currentUser = authRepository.currentUser ?: return false
+        return currentUser.providerData.any { it.providerId == GoogleAuthProvider.PROVIDER_ID }
+    }
+
+    fun deleteAccount(
+        password: String,
+        googleIdToken: String? = null,
+        onSuccess: () -> Unit = {},
+        onFailure: (String) -> Unit = {}
+    ) {
+        val currentUser = authRepository.currentUser
+        if (currentUser == null) {
+            onFailure("로그인한 사용자가 없습니다.")
+            return
+        }
+
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true, errorMessage = null) }
+
+            try {
+                val googleProviderId = GoogleAuthProvider.PROVIDER_ID
+                val isGoogleUser = currentUser.providerData.any { it.providerId == googleProviderId }
+
+                if (isGoogleUser) {
+                    if (googleIdToken.isNullOrBlank()) {
+                        throw IllegalArgumentException("구글 계정 재인증 정보가 없습니다.")
+                    }
+
+                    val credential = GoogleAuthProvider.getCredential(googleIdToken, null)
+                    currentUser.reauthenticate(credential).await()
+                } else {
+                    val email = currentUser.email
+                        ?: throw IllegalStateException("이메일 계정 정보를 찾을 수 없습니다.")
+
+                    if (password.isBlank()) {
+                        throw IllegalArgumentException("비밀번호를 입력해주세요.")
+                    }
+
+                    val credential = EmailAuthProvider.getCredential(email, password)
+                    currentUser.reauthenticate(credential).await()
+                }
+
+                userRepository.deleteCurrentUserData(currentUser.uid).getOrThrow()
+
+                currentUser.delete().await()
+                authRepository.logout(context)
+
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        navigationTarget = NavigationTarget.Login
+                    )
+                }
+                onSuccess()
+            } catch (e: Exception) {
+                val message = e.message ?: "계정 삭제 중 오류가 발생했습니다."
+                _uiState.update { it.copy(isLoading = false, errorMessage = message) }
+                onFailure(message)
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,7 +44,9 @@ fun ProfileSheetContent(
     name: String,
     imageUrl: String?,
     onUpdateProfileClick: () -> Unit,
+    onDeleteAccountClick: () -> Unit,
     onLogoutClick: () -> Unit,
+    onPolicyClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     ModalDrawerSheet(
@@ -117,7 +121,7 @@ fun ProfileSheetContent(
                     onClick = onUpdateProfileClick,
                     modifier = Modifier
                         .height(35.dp)
-                        .fillMaxWidth(0.65f),
+                        .fillMaxWidth(0.7f),
                     shape = RoundedCornerShape(18.dp),
                     contentPadding = PaddingValues(0.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -140,7 +144,7 @@ fun ProfileSheetContent(
                     onClick = onLogoutClick,
                     modifier = Modifier
                         .height(35.dp)
-                        .fillMaxWidth(0.6f),
+                        .fillMaxWidth(0.55f),
                     shape = RoundedCornerShape(18.dp),
                     contentPadding = PaddingValues(0.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -157,6 +161,44 @@ fun ProfileSheetContent(
                     )
                 }
             }
+
+            Button(
+                onClick = onDeleteAccountClick,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 40.dp)
+                    .height(35.dp)
+                    .fillMaxWidth(0.5f),
+                shape = RoundedCornerShape(18.dp),
+                contentPadding = PaddingValues(0.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFD32F2F)
+                )
+            ) {
+                Text(
+                    text = "계정 삭제",
+                    modifier = Modifier.fillMaxWidth(),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = Mung,
+                    textAlign = TextAlign.Center,
+                    color = Color.White
+                )
+            }
+
+            TextButton(
+                onClick = onPolicyClick,
+                modifier = modifier
+                    .align(Alignment.BottomCenter)
+            ) {
+                Text(
+                    text = "개인정보 처리방침",
+                    fontSize = 12.sp,
+                    fontFamily = Mung,
+                    color = TextGray,
+                    textDecoration = TextDecoration.Underline
+                )
+            }
         }
     }
 }
@@ -168,7 +210,9 @@ private fun ProfileSheetContentPreview() {
         email = "email",
         name = "name",
         onUpdateProfileClick = {},
+        onDeleteAccountClick = {},
         onLogoutClick = {},
+        onPolicyClick = {},
         imageUrl = null
     )
 }

@@ -7,7 +7,9 @@ import androidx.navigation.compose.composable
 import com.example.myapp.login.LoginScreen
 import com.example.myapp.signup.SignupScreen
 import com.example.myapp.choice.ChoiceScreen
+import com.example.myapp.home.screen.EditProfileScreen
 import com.example.myapp.home.screen.HomeScreen
+import com.example.myapp.home.screen.Policy
 
 sealed class NavigationTarget {
     data object None : NavigationTarget()
@@ -59,7 +61,24 @@ fun NavGraph(navController: NavHostController) {
                     navController.navigate("login") {
                         popUpTo("main") { inclusive= true }
                     }
+                },
+                onNavigateToEditProfile = {
+                    navController.navigate("editProfile")
+                },
+                onNavigateToPolicy = {
+                    navController.navigate("policy")
                 }
+            )
+        }
+
+        composable("policy") {
+            Policy(onCloseClick = { navController.popBackStack() })
+        }
+
+        composable("editProfile") {
+            EditProfileScreen(
+                onCancelClick = { navController.popBackStack() },
+                onCompleteClick = { navController.popBackStack() }
             )
         }
     }
