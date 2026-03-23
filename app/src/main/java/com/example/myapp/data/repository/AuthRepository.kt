@@ -1,5 +1,9 @@
 package com.example.myapp.data.repository
 
+import android.content.Context
+import android.util.Log
+import androidx.credentials.ClearCredentialStateRequest
+import androidx.credentials.CredentialManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -40,7 +44,10 @@ class AuthRepository @Inject constructor(
         }
     }
 
-    fun logout() {
+    suspend fun logout(context: Context) {
         auth.signOut()
+
+        val credentialManager = CredentialManager.create(context)
+        credentialManager.clearCredentialState(ClearCredentialStateRequest())
     }
 }
