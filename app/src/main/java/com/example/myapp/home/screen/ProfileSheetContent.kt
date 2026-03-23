@@ -85,8 +85,10 @@ fun ProfileSheetContent(
                         contentDescription = "Profile image",
                         modifier = Modifier
                             .size(120.dp)
-                            .background(Color.LightGray, CircleShape),
-                        contentScale = ContentScale.Crop
+                            .background(Color.White, CircleShape)
+                            .border(2.5.dp, Orange, CircleShape)
+                            .padding(10.dp),
+                        contentScale = ContentScale.Fit
                     )
                 }
 
