@@ -1,6 +1,5 @@
 package com.example.myapp.home.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapp.ui.theme.Mung
-import com.example.myapp.ui.theme.NewGray
 import com.example.myapp.ui.theme.TextGray
 
 @Composable
@@ -29,7 +27,6 @@ fun DogSheetContent(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
-            .background(NewGray)
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         Text(
@@ -38,7 +35,7 @@ fun DogSheetContent(
             textAlign = TextAlign.Center,
             fontFamily = Mung,
             fontWeight = FontWeight.Bold,
-            fontSize = 25.sp
+            fontSize = 28.sp
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -48,7 +45,7 @@ fun DogSheetContent(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Start,
             fontFamily = Mung,
-            fontSize = 20.sp,
+            fontSize = 22.sp,
             color = TextGray
         )
 

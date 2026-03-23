@@ -12,7 +12,6 @@ val Pink40 = Color(0xFF7D5260)
 
 val TextGray = Color(0xFF5C5C5C)
 val Orange = Color(0xFFFFBF00)
-val NewGray = Color(0xB3919191)
 val Clear = Color(0xFFAEDDFF)
-val TextBox = Color(0x80545454)
+val TextBox = Color(0x807A7A7A)
 val GeminiBlue = Color(0xFF147FFD)

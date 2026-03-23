@@ -9,9 +9,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material3.*
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +43,6 @@ fun PageContent(
     onGenerateTimeAiClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -127,7 +130,7 @@ fun PageContent(
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(modifier = Modifier.height(100.dp))
+            Spacer(modifier = Modifier.height(80.dp))
 
             when (page) {
                 0 -> {
@@ -143,7 +146,7 @@ fun PageContent(
                     uiState.dogImageRes?.let { imageRes ->
                         Image(
                             painter = painterResource(id = imageRes),
-                            contentDescription = "견종 이미지",
+                            contentDescription = "강아지 이미지",
                             modifier = modifier
                                 .size(450.dp)
                                 .clickable { onDogClick() }
@@ -172,40 +175,55 @@ private fun AiMessageSection(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
     ) {
-        OutlinedButton(
-            onClick = onClick,
-            modifier = Modifier.size(70.dp),
-            shape = CircleShape,
-            border = BorderStroke(2.dp, GeminiBlue),
-            colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = TextGray
-            ),
-            contentPadding = PaddingValues(0.dp)
-        ) {
-            if (isLoading) {
+        when {
+            isLoading -> {
                 CircularProgressIndicator(
-                    modifier = Modifier.size(30.dp),
-                    strokeWidth = 2.dp,
+                    modifier = Modifier.size(36.dp),
+                    strokeWidth = 3.dp,
                     color = Color.White
                 )
-            } else {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_gemini),
-                    contentDescription = "AI 생성",
-                    modifier = Modifier.fillMaxSize()
-                )
+            }
+
+            message.isBlank() -> {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    OutlinedButton(
+                        onClick = onClick,
+                        modifier = Modifier.size(70.dp),
+                        shape = CircleShape,
+                        border = BorderStroke(2.dp, GeminiBlue),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = TextGray
+                        ),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_gemini),
+                            contentDescription = buttonText,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "AI 코멘트 생성",
+                        fontFamily = Mung,
+                        fontSize = 22.sp,
+                        color = TextGray
+                    )
+                }
+            }
+
+            else -> {
+                RoundedTextBox(text = message)
             }
         }
-
-        if (message.isNotBlank()) {
-            Spacer(modifier = Modifier.height(16.dp))
-            RoundedTextBox(text = message)
-        }
-
-
     }
 }
 
@@ -225,7 +243,7 @@ fun RoundedTextBox(
         Text(
             text = text,
             fontFamily = Mung,
-            fontSize = 23.sp
+            fontSize = 25.sp
         )
     }
 }
@@ -234,15 +252,15 @@ private fun previewState() = HomeUiState(
     email = "test@example.com",
     name = "멍집사",
     imageUrl = null,
-    temperatureText = "22도",
-    locationText = "경기도 안산시",
+    temperatureText = "22",
+    locationText = "경기도 일산",
     weatherStatusText = "맑음",
     dogImageRes = R.drawable.big,
     dogDescription = "활동량이 많고 산책을 좋아하는 견종입니다.",
-    outfit = "후드티",
+    outfit = "패딩",
     time = "1시간",
-    outfitAiMessage = "바람이 살짝 있어 후드티가 체온 유지에 도움이 됩니다.\n\n대안으로는 얇은 맨투맨에 하네스를 함께 입히는 조합도 무난합니다.",
-    timeAiMessage = "기온이 무난해서 1시간 정도 천천히 걷기 좋습니다.\n\n한낮에는 체온이 오를 수 있으니 중간에 물을 챙겨 주세요."
+    outfitAiMessage = "바람이 차갑고 기온이 낮아서 패딩이 체온 유지에 도움이 됩니다.\n\n대신 얇은 맨투맨에 하네스를 함께 입히는 조합도 무난합니다.",
+    timeAiMessage = "기온이 무난해서 1시간 정도 천천히 걷기 좋습니다.\n\n산책 중에는 체온 변화를 봐 가면서 중간에 물을 챙겨 주세요."
 )
 
 @Preview(showBackground = true)
