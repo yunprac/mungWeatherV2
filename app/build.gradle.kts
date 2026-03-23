@@ -97,6 +97,8 @@ dependencies {
     implementation(libs.firebase.store)
     implementation(libs.firebase.storage)
     implementation("com.google.firebase:firebase-ai")
+    implementation("com.google.firebase:firebase-appcheck-debug")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.hilt.android)

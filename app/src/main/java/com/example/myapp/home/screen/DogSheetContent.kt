@@ -38,17 +38,17 @@ fun DogSheetContent(
             textAlign = TextAlign.Center,
             fontFamily = Mung,
             fontWeight = FontWeight.Bold,
-            fontSize = 18.sp
+            fontSize = 25.sp
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = description,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Start,
             fontFamily = Mung,
-            fontSize = 15.sp,
+            fontSize = 20.sp,
             color = TextGray
         )
 
