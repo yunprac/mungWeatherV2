@@ -277,7 +277,7 @@ private fun ProfileImageSection(
             AsyncImage(
                 model = uiState.imageUri,
                 contentDescription = "Album profile image",
-                modifier = modifier.padding(10.dp),
+                modifier = modifier,
                 contentScale = ContentScale.Fit
             )
         }
