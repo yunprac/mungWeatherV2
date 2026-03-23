@@ -194,8 +194,10 @@ class HomeViewModel @Inject constructor(
     }
 
     fun logout() {
-        authRepository.logout()
-        _uiState.update { it.copy(navigationTarget = NavigationTarget.Login) }
+        viewModelScope.launch {
+            authRepository.logout(context)
+            _uiState.update { it.copy(navigationTarget = NavigationTarget.Login) }
+        }
     }
 
     fun generateOutfitAiMessage() {
