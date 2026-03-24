@@ -5,9 +5,9 @@ import androidx.annotation.StringRes
 import com.yoon.weatherapp.R
 
 data class DogStageResource(
-    @DrawableRes val imageRes: Int,
-    @StringRes val outfitRes: Int,
-    @StringRes val timeRes: Int
+    @field:DrawableRes val imageRes: Int,
+    @field:StringRes val outfitRes: Int,
+    @field:StringRes val timeRes: Int
 )
 
 object DogWeatherResources {
