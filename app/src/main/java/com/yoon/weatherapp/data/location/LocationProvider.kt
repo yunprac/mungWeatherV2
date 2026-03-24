@@ -3,6 +3,7 @@ package com.yoon.weatherapp.data.location
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
+import com.google.android.gms.location.CurrentLocationRequest
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
@@ -21,9 +22,12 @@ class LocationProvider(
     suspend fun getCurrentLocation(): Location =
         suspendCancellableCoroutine { cont ->
             val cancellationTokenSource = CancellationTokenSource()
+            val request = CurrentLocationRequest.Builder()
+                .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
+                .build()
 
             fusedLocationClient.getCurrentLocation(
-                Priority.PRIORITY_HIGH_ACCURACY,
+                request,
                 cancellationTokenSource.token
             )
                 .addOnSuccessListener { location ->
