@@ -130,7 +130,7 @@ fun ProfileSheetContent(
                         containerColor = TextGray
                     )
                 ) {
-                        Text(
+                    Text(
                         text = "회원 정보 수정",
                         modifier = Modifier.fillMaxWidth(),
                         fontSize = 16.sp,
@@ -138,7 +138,6 @@ fun ProfileSheetContent(
                         fontFamily = Mung,
                         textAlign = TextAlign.Center
                     )
-                    }
                 }
 
                 Spacer(modifier = Modifier.height(15.dp))
@@ -162,14 +161,15 @@ fun ProfileSheetContent(
                             color = Color.White
                         )
                     } else {
-                    Text(
-                        text = "로그아웃",
-                        modifier = Modifier.fillMaxWidth(),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = Mung,
-                        textAlign = TextAlign.Center
-                    )
+                        Text(
+                            text = "로그아웃",
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = Mung,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             }
 
