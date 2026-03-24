@@ -1,4 +1,5 @@
 import java.util.Properties
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
@@ -65,12 +66,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
     }
 }
 
@@ -84,7 +88,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation)
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.compose.material.icons.extended)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -96,9 +100,9 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.store)
     implementation(libs.firebase.storage)
-    implementation("com.google.firebase:firebase-ai")
-    implementation("com.google.firebase:firebase-appcheck-debug")
-    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+    implementation(libs.firebase.ai)
+    implementation(libs.firebase.appcheck.debug)
+    implementation(libs.firebase.appcheck.playintegrity)
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.hilt.android)
@@ -107,8 +111,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.kotlinx.coroutines.android)
-    implementation("androidx.credentials:credentials:1.5.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
-    implementation("com.google.android.gms:play-services-location:21.3.0")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.2.0")
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.google.play.services.location)
+    implementation(libs.googleid)
 }
