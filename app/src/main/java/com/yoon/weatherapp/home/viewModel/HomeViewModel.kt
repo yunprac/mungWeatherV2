@@ -278,7 +278,6 @@ class HomeViewModel @Inject constructor(
 
             aiRepository.generateOutfitMessage(
                 breed = currentState.breed,
-                region = currentState.locationText,
                 temperature = temperature,
                 weatherStatus = currentState.weatherStatusText,
                 outfit = currentState.outfit
@@ -322,7 +321,6 @@ class HomeViewModel @Inject constructor(
 
             aiRepository.generateTimeMessage(
                 breed = currentState.breed,
-                region = currentState.locationText,
                 temperature = temperature,
                 weatherStatus = currentState.weatherStatusText,
                 time = currentState.time

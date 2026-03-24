@@ -13,7 +13,6 @@ class AIRepository @Inject constructor() {
 
     suspend fun generateOutfitMessage(
         breed: String,
-        region: String,
         temperature: Int,
         weatherStatus: String,
         outfit: String
@@ -23,7 +22,6 @@ class AIRepository @Inject constructor() {
             You are explaining a dog walking outfit recommendation for a mobile app.
 
             Dog breed: $breed
-            Region: $region
             Temperature: $temperature C
             Weather: $weatherStatus
             Recommended outfit: $outfit
@@ -41,7 +39,6 @@ class AIRepository @Inject constructor() {
 
     suspend fun generateTimeMessage(
         breed: String,
-        region: String,
         temperature: Int,
         weatherStatus: String,
         time: String
@@ -51,7 +48,6 @@ class AIRepository @Inject constructor() {
             You are explaining a dog walking time recommendation for a mobile app.
 
             Dog breed: $breed
-            Region: $region
             Temperature: $temperature C
             Weather: $weatherStatus
             Recommended walk time: $time
