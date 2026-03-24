@@ -22,7 +22,7 @@ fun localProperty(name: String): String =
         ?: ""
 
 android {
-    namespace = "com.example.myapp"
+    namespace = "com.yoon.weatherapp"
     compileSdk {
         version = release(36)
     }
@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.myapp"
+        applicationId = "com.yoon.weatherapp"
         minSdk = 24
         targetSdk = 36
         versionCode = 2

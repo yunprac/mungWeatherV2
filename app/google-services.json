@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:210851281252:android:c695cdcea1dd7a3fd6a271",
+        "mobilesdk_app_id": "1:210851281252:android:ec3cc6448545a6d6d6a271",
         "android_client_info": {
-          "package_name": "com.example.myapp"
+          "package_name": "com.yoon.weatherapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "210851281252-a9npmqp2l1uhqjohh61bdq8jgkedtmcl.apps.googleusercontent.com",
+          "client_id": "210851281252-m2phcri1bm1rak3slrquq95qqn2lq176.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.myapp",
-            "certificate_hash": "e22a80f48ca8c6d31f7c6c1d311d90b1011e1c05"
+            "package_name": "com.yoon.weatherapp",
+            "certificate_hash": "271fafd92b230b86d34116c8fee5d15c30cecd2a"
           }
         },
         {
