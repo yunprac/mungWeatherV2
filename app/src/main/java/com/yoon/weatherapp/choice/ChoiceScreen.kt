@@ -293,7 +293,7 @@ private fun ProfileImageSection(
             Image(
                 painter = painterResource(id = imageRes),
                 contentDescription = "Default profile image",
-                modifier = modifier,
+                modifier = modifier.padding(15.dp),
                 contentScale = ContentScale.Fit
             )
         }
