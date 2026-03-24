@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -43,6 +44,7 @@ fun ProfileSheetContent(
     email: String,
     name: String,
     imageUrl: String?,
+    isLoading: Boolean,
     onUpdateProfileClick: () -> Unit,
     onDeleteAccountClick: () -> Unit,
     onLogoutClick: () -> Unit,
@@ -128,7 +130,7 @@ fun ProfileSheetContent(
                         containerColor = TextGray
                     )
                 ) {
-                    Text(
+                        Text(
                         text = "회원 정보 수정",
                         modifier = Modifier.fillMaxWidth(),
                         fontSize = 16.sp,
@@ -136,12 +138,14 @@ fun ProfileSheetContent(
                         fontFamily = Mung,
                         textAlign = TextAlign.Center
                     )
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Button(
                     onClick = onLogoutClick,
+                    enabled = !isLoading,
                     modifier = Modifier
                         .height(35.dp)
                         .fillMaxWidth(0.55f),
@@ -151,6 +155,13 @@ fun ProfileSheetContent(
                         containerColor = Orange
                     )
                 ) {
+                    if (isLoading) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(18.dp),
+                            strokeWidth = 2.dp,
+                            color = Color.White
+                        )
+                    } else {
                     Text(
                         text = "로그아웃",
                         modifier = Modifier.fillMaxWidth(),
@@ -209,6 +220,7 @@ private fun ProfileSheetContentPreview() {
     ProfileSheetContent(
         email = "email",
         name = "name",
+        isLoading = false,
         onUpdateProfileClick = {},
         onDeleteAccountClick = {},
         onLogoutClick = {},

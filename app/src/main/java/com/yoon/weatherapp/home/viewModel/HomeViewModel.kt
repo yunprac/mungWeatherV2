@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val weatherRepository: WeatherRepository,
     private val aiRepository: AIRepository,
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) : ViewModel() {
 
     private val locationProvider = LocationProvider(context)
@@ -196,6 +196,7 @@ class HomeViewModel @Inject constructor(
 
     fun logout() {
         viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             authRepository.logout(context)
             _uiState.update { it.copy(navigationTarget = NavigationTarget.Login) }
         }

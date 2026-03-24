@@ -66,6 +66,11 @@ fun LoginScreen(
     LaunchedEffect(uiState.navigationTarget) {
         when (uiState.navigationTarget) {
             NavigationTarget.Login -> {
+                Toast.makeText(
+                    context,
+                    "로그인에 성공했습니다.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 if (uiState.firstLogin) {
                     onNavigateToChoice()
                 } else {
@@ -73,6 +78,12 @@ fun LoginScreen(
                 }
             }
             else -> Unit
+        }
+    }
+
+    LaunchedEffect(uiState.errorMessage) {
+        uiState.errorMessage?.let { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
 

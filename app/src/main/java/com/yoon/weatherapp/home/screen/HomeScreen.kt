@@ -150,6 +150,7 @@ fun HomeScreen(
                 email = uiState.email,
                 name = uiState.name,
                 imageUrl = uiState.imageUrl,
+                isLoading = uiState.isLoading,
                 onUpdateProfileClick = onNavigateToEditProfile,
                 onDeleteAccountClick = {
                     deletePassword = ""
