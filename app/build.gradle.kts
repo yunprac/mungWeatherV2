@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
 }
 
@@ -102,7 +102,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
     implementation(libs.hilt.compose)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
@@ -111,8 +111,4 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.2.0")
-}
-
-kapt {
-    correctErrorTypes = true
 }
