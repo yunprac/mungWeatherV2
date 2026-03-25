@@ -70,11 +70,8 @@ fun HomeScreen(
     )
 
     val locationPermissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        val granted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
-            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true
-
+        contract = ActivityResultContracts.RequestPermission()
+    ) { granted ->
         if (granted) {
             viewModel.loadWeather()
         }
@@ -83,12 +80,9 @@ fun HomeScreen(
     LaunchedEffect(Unit) {
         viewModel.loadHomeData()
         if (viewModel.shouldRequestLocationPermission()) {
-            locationPermissionLauncher.launch(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            )
+            locationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        } else {
+            viewModel.loadWeather()
         }
     }
 
@@ -162,7 +156,6 @@ fun HomeScreen(
 
             DotIndicator(
                 currentPage = uiState.currentPage,
-                pageCount = 3,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 24.dp)
@@ -329,14 +322,13 @@ fun HomeScreen(
 @Composable
 private fun DotIndicator(
     currentPage: Int,
-    pageCount: Int,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        repeat(pageCount) { index ->
+        repeat(3) { index ->
             Box(
                 modifier = Modifier
                     .size(if (index == currentPage) 10.dp else 8.dp)

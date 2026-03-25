@@ -75,8 +75,6 @@ class HomeViewModel @Inject constructor(
                     }
                     return@launch
                 }
-
-            loadWeather()
         }
     }
 
@@ -361,17 +359,10 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun hasLocationPermission(): Boolean {
-        val fineLocationGranted = ContextCompat.checkSelfPermission(
+        return ContextCompat.checkSelfPermission(
             context,
             Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
-
-        val coarseLocationGranted = ContextCompat.checkSelfPermission(
-            context,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
-
-        return fineLocationGranted || coarseLocationGranted
     }
 
     fun shouldRequestLocationPermission(): Boolean = !hasLocationPermission()
