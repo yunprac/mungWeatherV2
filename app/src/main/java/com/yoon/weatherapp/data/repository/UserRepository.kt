@@ -1,11 +1,15 @@
 package com.yoon.weatherapp.data.repository
 
+import androidx.annotation.Keep
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import android.net.Uri
 
+@Keep
+@IgnoreExtraProperties
 data class UserProfile(
     val uid: String = "",
     val email: String = "",
