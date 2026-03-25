@@ -80,7 +80,7 @@ fun HomeScreen(
     LaunchedEffect(Unit) {
         viewModel.loadHomeData()
         if (viewModel.shouldRequestLocationPermission()) {
-            locationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            locationPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         } else {
             viewModel.loadWeather()
         }

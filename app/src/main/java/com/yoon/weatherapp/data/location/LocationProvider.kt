@@ -23,7 +23,7 @@ class LocationProvider(
         suspendCancellableCoroutine { cont ->
             val cancellationTokenSource = CancellationTokenSource()
             val request = CurrentLocationRequest.Builder()
-                .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
+                .setPriority(Priority.PRIORITY_BALANCED_POWER_ACCURACY)
                 .build()
 
             fusedLocationClient.getCurrentLocation(
