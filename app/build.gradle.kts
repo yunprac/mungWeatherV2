@@ -36,8 +36,8 @@ android {
         applicationId = "com.yoon.weatherapp"
         minSdk = 24
         targetSdk = 36
-        versionCode = 4
-        versionName = "1.4"
+        versionCode = 5
+        versionName = "1.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
@@ -55,7 +55,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // 코드 축소 및 난독화 활성화 (가독화 파일 생성)
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
