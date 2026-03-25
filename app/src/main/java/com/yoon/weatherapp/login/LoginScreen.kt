@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -34,7 +33,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.yoon.weatherapp.BuildConfig
 import com.yoon.weatherapp.NavigationTarget
 import com.yoon.weatherapp.R
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.yoon.weatherapp.ui.theme.Mung
 import com.yoon.weatherapp.ui.theme.TextGray
@@ -55,9 +54,7 @@ fun LoginScreen(
     val googleLoginRequest = remember {
         GetCredentialRequest.Builder()
             .addCredentialOption(
-                GetGoogleIdOption.Builder()
-                    .setServerClientId(BuildConfig.WEB_CLIENT_ID)
-                    .setFilterByAuthorizedAccounts(false)
+                GetSignInWithGoogleOption.Builder(BuildConfig.WEB_CLIENT_ID)
                     .build()
             )
             .build()
