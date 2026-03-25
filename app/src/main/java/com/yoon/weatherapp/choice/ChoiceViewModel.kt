@@ -31,11 +31,13 @@ class ChoiceViewModel @Inject constructor(
     }
 
     fun onBasicClick() {
-        _uiState.update { it.copy(
-            profileImageType = ProfileImageType.BASIC,
-            imageUri = null,
-            showProfileDialog = false
-        ) }
+        _uiState.update {
+            it.copy(
+                profileImageType = ProfileImageType.BASIC,
+                imageUri = null,
+                showProfileDialog = false
+            )
+        }
     }
 
     fun onAlbumClick() {
@@ -45,10 +47,12 @@ class ChoiceViewModel @Inject constructor(
     fun onAlbumImageSelected(uri: Uri?) {
         if (uri == null) return
 
-        _uiState.update { it.copy(
-            profileImageType = ProfileImageType.ALBUM,
-            imageUri = uri
-        ) }
+        _uiState.update {
+            it.copy(
+                profileImageType = ProfileImageType.ALBUM,
+                imageUri = uri
+            )
+        }
     }
 
     fun onNameChange(name: String) {
@@ -60,9 +64,14 @@ class ChoiceViewModel @Inject constructor(
     }
 
     fun saveProfile(onSuccess: () -> Unit, onFail: (String) -> Unit) {
+        fun fail(message: String) {
+            _uiState.update { it.copy(isLoading = false, errorMessage = message) }
+            onFail(message)
+        }
+
         val currentUser = authRepository.currentUser
         if (currentUser == null) {
-            onFail("로그인한 사용자가 없습니다.")
+            fail("로그인한 사용자가 없습니다.")
             return
         }
 
@@ -72,16 +81,17 @@ class ChoiceViewModel @Inject constructor(
 
         when {
             name.isBlank() -> {
-                onFail("이름을 입력해주세요")
+                fail("이름을 입력해주세요.")
                 return
             }
 
             breed.isBlank() -> {
-                onFail("견종을 선택해주세요.")
+                fail("견종을 선택해주세요.")
+                return
             }
 
             currentState.profileImageType == ProfileImageType.NONE -> {
-                onFail("프로필 이미지를 선택해주세요.")
+                fail("프로필 이미지를 선택해주세요.")
                 return
             }
         }
@@ -112,4 +122,3 @@ class ChoiceViewModel @Inject constructor(
         }
     }
 }
-

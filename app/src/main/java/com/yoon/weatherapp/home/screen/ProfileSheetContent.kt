@@ -177,7 +177,7 @@ fun ProfileSheetContent(
                 onClick = onDeleteAccountClick,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 40.dp)
+                    .padding(bottom = 50.dp)
                     .height(35.dp)
                     .fillMaxWidth(0.5f),
                 shape = RoundedCornerShape(18.dp),
