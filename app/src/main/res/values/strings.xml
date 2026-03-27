@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">MyApp</string>
+
+    <!--대형견-->
+    <string name="big_description">
+        특징 : 성격이 온순하고 느긋한 경우가 많지만, 존재감만으로도 주변에 위압감을 줄 수 있습니다.\n\n
+        주의 사항 : 덩치가 큰 만큼 타인에게 공포감을 주지 않도록 철저한 사회화 및 복종 훈련이 필수입니다.
+        건강 면에서는 급하게 먹을 경우 위가 꼬이는 위염전이나 무게로 인한 고관절 이형성증을 조심해야 합니다.
+    </string>
+
+    <string name="big_outfit_0">패딩</string>
+    <string name="big_outfit_1">윈드 브레이커</string>
+    <string name="big_outfit_2">-</string>
+    <string name="big_outfit_3">쿨조끼</string>
+    <string name="big_outfit_4">쿨조끼</string>
+
+    <string name="big_time_0">30분</string>
+    <string name="big_time_1">1시간</string>
+    <string name="big_time_2">2시간</string>
+    <string name="big_time_3">1시간</string>
+    <string name="big_time_4">30분</string>
+
+    <!--중형견-->
+    <string name="middle_description">
+        특징 : 소형견보다 에너지가 넘치고 대형견보다 관리가 수월한 황금 밸런스를 가졌습니다.\n\n
+        주의 사항 : 활동량이 상당하기 때문에 산책 부족 시 입질 또는 가구 훼손 등의 행동을 할 수 있습니다.
+        또한, 코카스패니얼이나 비글 같은 종은 귀가 덮여 있는 경우가 많아 귓병 관리 등 위생에 신경 써야 합니다.
+    </string>
+
+    <string name="middle_outfit_0">패딩</string>
+    <string name="middle_outfit_1">플리스 자켓</string>
+    <string name="middle_outfit_2">후드티</string>
+    <string name="middle_outfit_3">얇은 티셔츠</string>
+    <string name="middle_outfit_4">-</string>
+
+    <string name="middle_time_0">20분</string>
+    <string name="middle_time_1">40분</string>
+    <string name="middle_time_2">1시간</string>
+    <string name="middle_time_3">45분</string>
+    <string name="middle_time_4">20분</string>
+
+    <!--소형견-->
+    <string name="small_description">
+        특징 : 아파트나 빌라 등 한국의 주거 환경에 가장 적합하며 활동량이 비교적 적습니다.\n\n
+        주의 사항 : 유전적으로 슬개골 탈구에 매우 취약합니다. 높은 곳에서 뛰어내리는 동작을 자제시키고,
+        발바닥 털 관리와 매트 설치가 필수적입니다. 또한, 체구가 작아 추위를 빨리 타므로 겨울철 체온 유지에 각별히
+        신경 써야 합니다.
+    </string>
+
+    <string name="small_outfit_0">패딩</string>
+    <string name="small_outfit_1">플리스 자켓</string>
+    <string name="small_outfit_2">가디건</string>
+    <string name="small_outfit_3">티셔츠</string>
+    <string name="small_outfit_4">메쉬 나시</string>
+
+    <string name="small_time_0">10분</string>
+    <string name="small_time_1">20분</string>
+    <string name="small_time_2">45분</string>
+    <string name="small_time_3">1시간</string>
+    <string name="small_time_4">15분</string>
+</resources>

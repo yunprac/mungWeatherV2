@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "210851281252",
+    "project_id": "mungweather-af255",
+    "storage_bucket": "mungweather-af255.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210851281252:android:ec3cc6448545a6d6d6a271",
+        "android_client_info": {
+          "package_name": "com.yoon.weatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210851281252-c0hjpf3hrl8kon69jsmt91lfed15upo2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yoon.weatherapp",
+            "certificate_hash": "146303a1c3fc3827fa8e043733cc0d4c6b005847"
+          }
+        },
+        {
+          "client_id": "210851281252-b2dmsej80f2ncdnfo8757ei7o94hjvb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKsKKDlIpK_bGDTWFCf49-u9mTe9rLcP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210851281252-b2dmsej80f2ncdnfo8757ei7o94hjvb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
