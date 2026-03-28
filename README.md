@@ -1,8 +1,6 @@
 # 🐶 mungWeatherV2
 > **반려견 보호자를 위한 맞춤형 날씨 & 산책 코디 추천 앱 (Kotlin 버전)**
 
----
-
 ## 🌤️ 프로젝트 개요
 **mungWeatherV2**는 원래의 mungWeather를 Kotlin과 Jetpack Compose로 현대화한 버전입니다.  
 반려견 보호자를 위한 스마트 날씨 앱으로,  
