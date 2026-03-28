@@ -1,17 +1,13 @@
 # 🐶 mungWeatherV2
 > **반려견 보호자를 위한 맞춤형 날씨 & 산책 코디 추천 앱 (Kotlin 버전)**
 
-<p align="center">
-  <img src="images/main.png" />
-</p>
-
 ---
 
 ## 🌤️ 프로젝트 개요
 **mungWeatherV2**는 원래의 mungWeather를 Kotlin과 Jetpack Compose로 현대화한 버전입니다.  
 반려견 보호자를 위한 스마트 날씨 앱으로,  
 사용자의 위치 기반 **현재 날씨**를 조회하고,  
-**견종별 맞춤 산책 시간과 의상**을 추천해주는 서비스입니다.
+**견종별 맞춤 산책 시간과 의상**을 추천하고 AI가 추천 이유에 대해 설명해주는 서비스입니다.
 
 ## ✨ 주요 기능
 | 기능 | 설명 |
@@ -44,22 +40,6 @@
 - 🔹 Google Play Location Services
 - 🔹 Coroutines, Flow
 - 🔹 Hilt (의존성 주입)
-
-## 📱 실행 화면
-
-| ![회원가입](images/image1.gif) | ![사용자 정보](images/image2.gif) | ![견종 정보](images/image3.gif) | ![견종별 추천 정보](images/image4.gif) |
-|:--:|:--:|:--:|:--:|
-| **회원 가입** | **사용자 프로필** | **견종별 주의 사항** | **견종별 추천 정보** |
-
----
-
-## 👥 팀원 소개
-
-| 이름 | GitHub |
-|:----|:----|
-| **이윤영 (팀장)** | [@yunprac](https://github.com/yunprac) |
-| **임채연** | [@imceyen](https://github.com/imceyen) |
-| **이선예** |  |
 
 ---
 
